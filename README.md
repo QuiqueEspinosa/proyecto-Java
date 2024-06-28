@@ -68,5 +68,5 @@ Las contribuciones son bienvenidas. Por favor, sigue los pasos a continuación p
 **Enrique Espinosa** y **Nadia Postigo**
 
 <div align="center">
-    <img src="[https://imgur.com/j6tQHPL.png" alt="Java Illustration" ](https://miro.medium.com/v2/resize:fit:1400/1*aXe6MaOyhdIP5WqdPHhSFw.png)/>
+    <img src="https://miro.medium.com/v2/resize:fit:1400/1*aXe6MaOyhdIP5WqdPHhSFw.png"/>
 </div>
