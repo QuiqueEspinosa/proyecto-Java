@@ -49,7 +49,8 @@ Este proyecto es el trabajo práctico final de backend, donde se demuestra el ma
 
 ## Uso
 
-- Accede a la documentación de la API en `http://localhost:8080/swagger-ui.html`
+- Accede a la documentación de la API en `http://localhost:8083/swagger-ui.html` para product
+- Accede a la documentación de la API en `http://localhost:8082/swagger-ui.html` para Orders
 - Utiliza las herramientas de desarrollo como Postman para interactuar con las APIs protegidas mediante tokens JWT.
 
 ## Contribuciones
