@@ -17,6 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -58,6 +59,7 @@ public class ProductController {
             @ApiResponse(responseCode = "500", description = "error de parametros", content = @Content),
             @ApiResponse(responseCode = "400", description = "error de la respuesta", content = @Content)
     })
+
     @PostMapping //metodo post
     @ResponseStatus(HttpStatus.CREATED)//responde el estado del metodo es una anotacion 200=ok 404 etc
     //llamamos la funcion para crear un nuevo producto
@@ -95,7 +97,11 @@ public class ProductController {
         return productService.updateProduct(id,updateProduct);
     }
 
-
+  @GetMapping ("/{sku}")
+  @ResponseStatus(HttpStatus.OK)
+  public Product getProductSku(@PathVariable("sku")String sku){
+      return productService.getProduct(sku);
+  }
 
 
 

@@ -1,14 +1,13 @@
-package com.ucc.crudservice.swagger;
+package com.ucc.crudorders.swagger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 
 import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Contact;
-import  io.swagger.v3.oas.models.info.Info;
 import  org.springframework.context.annotation.Bean;
 import  org.springframework.context.annotation.Configuration;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 @Configuration // es una anotacion que indica le dice que esta clase va ser de configuracion
@@ -18,10 +17,11 @@ import java.io.InputStream;
 public class SwaggerConfig {
     //un been es un objeto intanciado,esambleado y gesteniona en el contedor de spring
     @Bean //la utilizamos dentro de una clase con metodo configuration par indicar que el retorno este registrado.
-    public OpenAPI api(){ //metodo
-        return new OpenAPI().info(new Info().title("Nuestra primera api creada con java/Spring").version("1.0")//creamos una nueva instancia y le asigamos a la info
-                .contact(new Contact().name("Quique Espinosa").url("https://www.linkedin.com/in/enrique-espinosa-010783251"))
-                .description("Esta api te permite hacer las operaciones Crud de un producto")
-        );
+    public OpenAPI api() throws IOException {
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("swagger.json");
+        ObjectMapper objectMapper = new ObjectMapper();
+        OpenAPI openAPI = objectMapper.readValue(inputStream, OpenAPI.class);
+        return   openAPI.info(openAPI.getInfo());
+
     }
 }

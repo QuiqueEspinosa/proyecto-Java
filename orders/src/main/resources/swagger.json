@@ -1,0 +1,197 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Nuestra primera api creada con java/Spring",
+    "description": "Esta api te permite hacer las operaciones Crud de un Ordenes",
+    "contact": {
+      "name": "Quique Espinosa y Nadia Postigo"
+
+    },
+    "version": "1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8082",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/api/ord/{id}": {
+      "put": {
+        "tags": [
+          "orders-controller"
+        ],
+        "summary": "Este edpoint se encarga de actualizar/editar un nuevo ordenes.",
+        "operationId": "updateOrders",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ord"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Orden Actualizado con exito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ord"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "error de la respuesta"
+          },
+          "500": {
+            "description": "error de parametros"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "orders-controller"
+        ],
+        "summary": "Este edpoint se encarga de Eliminar una nueva Orden.",
+        "operationId": "deleteOrders",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Orden eliminado con exito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ord"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "error de parametros"
+          }
+        }
+      }
+    },
+    "/api/ord": {
+      "get": {
+        "tags": [
+          "orders-controller"
+        ],
+        "summary": "Este edpoint se encarga de obtener todas las Ordenes",
+        "operationId": "getOrders",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ord"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "orders-controller"
+        ],
+        "summary": "Este edpoint se encarga de crear una nueva Orden.",
+        "operationId": "newOrders",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ord"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Orden creado con exito",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ord"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Created",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "error de la respuesta"
+          },
+          "500": {
+            "description": "error de parametros"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Orders": {
+        "required": [
+          "ord",
+          "sku",
+          "cant"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ord": {
+            "type": "string"
+          },
+          "sku": {
+            "type": "string"
+          },
+          "cant": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

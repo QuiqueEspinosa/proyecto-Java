@@ -5,7 +5,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity //esta notacion sirve para que marque la clase como una actividad en la base de datos
-@Table(name = "Pedidos")//le vamos a deci el nombre para que se guarde en la base de datos
+@Table(name = "Orders")//le vamos a deci el nombre para que se guarde en la base de datos
 @Getter
 @Setter
 @AllArgsConstructor //genera un contructor que nos inicializa los campos automaticamente
@@ -21,7 +21,7 @@ public class Orders {
     private String ord;
     @NotBlank(message = "el campo Sku no debe estar vacio")
     private String sku;
-    @NotBlank(message = "el campo catidad no debe estar vacio")
+    @NotBlank(message = "el campo cantidad no debe estar vacio")
     private String cant;
 
 }

@@ -1,5 +1,7 @@
 package com.ucc.crudorders.controller;
 
+import com.ucc.crudorders.service.ProductsProvider;
+import com.ucc.crudservice.service.ProductService;
 import com.ucc.crudorders.model.Orders;
 import com.ucc.crudorders.service.OrdersService;
 import jakarta.validation.Valid;
@@ -18,10 +20,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrdersController {
     private final OrdersService ordersService; //inyeccion
-
+    private  final ProductsProvider productsProvider; //inyectamos el service
 
     //METODO PARA OBTENER
-
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<Orders> getOrders() {
@@ -30,7 +31,6 @@ public class OrdersController {
 
 
     //METODO PARA CREAR
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Object> newOrders (@Valid @RequestBody Orders orders, BindingResult bindingResult){
@@ -42,7 +42,11 @@ public class OrdersController {
                     .collect(Collectors.toList()); //metodo para rencopilar la lista de error y muestra al cliente el error
             return  new ResponseEntity<>(error , HttpStatus.BAD_REQUEST);//retorna el mensaje
         }
-        return  ordersService.newOrders(orders);// si no hay error crea el producto
+        if (productsProvider.isProductAvailable(orders.getSku())) {
+            return ordersService.newOrders(orders);// si no hay error crea el producto
+        }else {
+            return  new ResponseEntity<>("No se encontro el sku del producto" , HttpStatus.NOT_FOUND);//retorna el mensaje
+        }
     }
 
     //METODO PARA ACTUALIZAR

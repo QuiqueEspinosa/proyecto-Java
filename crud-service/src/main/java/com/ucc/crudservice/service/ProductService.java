@@ -61,6 +61,11 @@ public ResponseEntity<Object> updateProduct(Long id,Product updatedProduct){ //d
         return new ResponseEntity<>("Product delete successfully", HttpStatus.OK);
     }
 
+//para GETPRODUCT (id)
+    public Product getProduct (String sku){
+        return productRepository.findBySku(sku);
+}
+
 }
 
 
