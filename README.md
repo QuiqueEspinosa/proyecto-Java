@@ -6,7 +6,7 @@
 
 ## Descripción
 
-Este proyecto es el trabajo práctico final de backend, donde se demuestra el manejo de APIs con autenticación mediante tokens y documentación con Swagger. El proyecto fue desarrollado por **Enrique Espinosa** **Y** **Nadia Postigo**.
+Este proyecto es el trabajo práctico final de backend, donde se demuestra el manejo de APIs con autenticación mediante tokens y documentación con Swagger. El proyecto fue desarrollado por **Enrique Espinosa** **y** **Nadia Postigo**.
 
 ## Características
 
@@ -49,8 +49,8 @@ Este proyecto es el trabajo práctico final de backend, donde se demuestra el ma
 
 ## Uso
 
-- Accede a la documentación de la API en `http://localhost:8083/swagger-ui.html` para product
-- Accede a la documentación de la API en `http://localhost:8082/swagger-ui.html` para Orders
+- Accede a la documentación de la API en `http://localhost:8083/swagger-ui.html` para product.
+- Accede a la documentación de la API en `http://localhost:8082/swagger-ui.html` para Orders.
 - Utiliza las herramientas de desarrollo como Postman para interactuar con las APIs protegidas mediante tokens JWT.
 
 ## Contribuciones
@@ -63,9 +63,10 @@ Las contribuciones son bienvenidas. Por favor, sigue los pasos a continuación p
 4. Sube los cambios (`git push origin feature/nueva-funcionalidad`).
 5. Abre un Pull Request.
 
-## Autor
+## Autores
 
-**Enrique Espinosa**
+**Enrique Espinosa** y **Nadia Postigo**
 
-![Java Illustration](https://imgur.com/j6tQHPL.png)
-
+<div align="center">
+    <img src="https://imgur.com/j6tQHPL.png" alt="Java Illustration" />
+</div>
