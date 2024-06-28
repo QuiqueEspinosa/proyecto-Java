@@ -67,5 +67,5 @@ Las contribuciones son bienvenidas. Por favor, sigue los pasos a continuación p
 
 **Enrique Espinosa**
 
-![Java Illustration](https://imgur.com/j6tQHPL.png) <!-- Make sure this URL points to an actual image you want to use -->dKmPBoOR3zhn5MOv+HLz/BVBZnr4XWNr0Y5rbWAocXc+mnfT33j65X8oSl3HUlPm2Ytpd/fp3zg9EJ0GGOCwJqqmbU0X982SotVXUMIOUIO/+bkFkmus5Lvp//DheGrlWRHd7oy+JXEsxHYUvdUhXHStzfXoxF4TzpcQ8t/xvgKnUV3OBplTlQY5zxIPkIYvs7t2k+LBUt6ehieOE1hFqDIZOGIGCPpEuiQghBz40v8STI353r64TSFSUMiuvd1PRAmOHbDF3KJCJxydP9EhUnBD75oNhQGZDC7Gb6OFrxKROCTFWbELcZP3YkYA8UAjGfEYIaHG7AY3xmdpDD3fNVs7aE7CoKvsBwAxjb6gj9lpwtudXLC8CV+MccJSqXrriyEAaFkWTy0VqyNlOXa+akJI9aep+BtMry+OU/ddydBYd2dhI859mF8M5z4/qR7f0q1NV80a478YHjrO7z3Ig47606wOKFLJ9YZ9s9h5IaP1HyFeOzH/8EzHN4dfWHW7j75gwo+BmeBT+jazieYhkQQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEEQBEHejf8CnIxgl0vLAq4AAAAASUVORK5CYII=)
+![Java Illustration](https://imgur.com/j6tQHPL.png)
 
