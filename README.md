@@ -6,7 +6,7 @@
 
 ## Descripción
 
-Este proyecto es el trabajo práctico final de backend, donde se demuestra el manejo de APIs con autenticación mediante tokens y documentación con Swagger. El proyecto fue desarrollado por **Enrique Espinosa**.
+Este proyecto es el trabajo práctico final de backend, donde se demuestra el manejo de APIs con autenticación mediante tokens y documentación con Swagger. El proyecto fue desarrollado por **Enrique Espinosa** **Y** **Nadia Postigo**.
 
 ## Características
 
