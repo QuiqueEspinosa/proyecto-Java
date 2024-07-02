@@ -1,59 +1,61 @@
 package com.ucc.crudservice.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import com.ucc.crudservice.filters.JwtRequestFilter;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
-
-// 2 anotaciones
-@Configuration// esto le dice a sprint que la clase es una configuracion de spring
-@EnableWebSecurity //esta anotacion nos habilita la seguridad web en nuestra app
+@Configuration
+public class DefaultSecurityConfig {
 
 
-
-public class DefaultSecurityConfig {       //configuracion de cadenad del filtro
-
-    @Bean//es un objeto //es una anotacion que se utiliza  en metodos dentro de clases anotadas con @configuracion.Cuando spring contruye el proyecto y scanea la configuracion de la app,y detecta estos metodos
-
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{ //aca definimos la cadena de filtros
+  @Autowired
+  private JwtRequestFilter jwtRequestFilter;
+  @Bean
+  SecurityFilterChain web(HttpSecurity http) throws Exception {
     http
             .csrf(csrf -> csrf.disable())// desabilita csrf uasando el nuevo customizer
-            .authorizeHttpRequests(authz -> authz
-                    .requestMatchers(HttpMethod.GET, "/api/**").permitAll() // Permitir GET requests sin autenticación
-                    .requestMatchers(HttpMethod.POST, "/api/**").authenticated() // Requerir autenticación para POST
-                    .requestMatchers(HttpMethod.PUT, "/api/**").authenticated() // Requerir autenticación para PUT
-                    .requestMatchers(HttpMethod.DELETE, "/api/**").authenticated() // Requerir autenticación para DELETE
-                    .anyRequest().authenticated()
+        .authorizeHttpRequests((authorize) -> authorize
+            .requestMatchers("/publico/**").permitAll()                
+            .requestMatchers(HttpMethod.GET,"/swagger-ui/**").permitAll()
+            .requestMatchers(HttpMethod.GET,"/v3/**").permitAll()
+            .requestMatchers(HttpMethod.GET,"/swagger-ui/index.html").permitAll()
+            .requestMatchers("/api/**").hasRole("ADMIN")
+            .anyRequest().authenticated()
         )
-        .httpBasic(withDefaults()); //habilita la autentifiacion basica con http
-    return http.build(); //returna un objeto
-    }
+        .cors(withDefaults())
+        .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)
+        .sessionManagement((session) -> session
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        );
+    ;
+
+    return http.build();
+  }
 
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user = User.builder()
-                .username("user")
-                .password(passwordEncoder().encode("1234"))
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(user);
-    }
 
+  @Bean
+  PasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
 
-    @Bean
-    public PasswordEncoder passwordEncoder(){ //esta es una interface
-        return  new BCryptPasswordEncoder(); //es un algoritmo de hash que ayuda que nuestra contraseña no sea plana sino encriptada
-    }
+  @Bean
+  AuthenticationManager authenticationManager(AuthenticationConfiguration
+      authenticationConfiguration) throws Exception {
+    return authenticationConfiguration.getAuthenticationManager();
+  }
+
 }
+

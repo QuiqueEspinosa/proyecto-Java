@@ -19,8 +19,8 @@ public class SwaggerConfig {
     //un been es un objeto intanciado,esambleado y gesteniona en el contedor de spring
     @Bean //la utilizamos dentro de una clase con metodo configuration par indicar que el retorno este registrado.
     public OpenAPI api(){ //metodo
-        return new OpenAPI().info(new Info().title("Nuestra primera api creada con java/Spring").version("1.0")//creamos una nueva instancia y le asigamos a la info
-                .contact(new Contact().name("Quique Espinosa").url("https://www.linkedin.com/in/enrique-espinosa-010783251"))
+        return new OpenAPI().info(new Info().title("Nuestra  api creada con java/Spring").version("1.0")//creamos una nueva instancia y le asigamos a la info
+                .contact(new Contact().name("Quique Espinosa y Nadia Postigo"))
                 .description("Esta api te permite hacer las operaciones Crud de un producto")
         );
     }
