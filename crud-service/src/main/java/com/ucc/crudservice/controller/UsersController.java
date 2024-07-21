@@ -16,7 +16,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 
 
-
+/*este controlador implementa un endpoint para autenticar usuarios mediante Spring Security y JWT.
+ Toma las credenciales del usuario, las verifica,
+  genera un token JWT si las credenciales son válidas y maneja las excepciones en caso de errores de autenticación.
+*/
 @RestController
 @RequestMapping("publico")
 @RequiredArgsConstructor

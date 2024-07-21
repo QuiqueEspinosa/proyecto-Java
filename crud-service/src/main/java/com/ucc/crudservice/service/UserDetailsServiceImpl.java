@@ -11,6 +11,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
+/*
+proporciona la lógica para cargar detalles de usuario durante la autenticación en una aplicación Spring Boot con Spring Security.
+Utiliza una lista estática de usuarios para simplificar el ejemplo,
+pero en un entorno real,
+estos detalles podrían ser recuperados de una base de datos u otro almacenamiento persistente.
+Este enfoque permite integrar la autenticación y autorización basada en roles de manera eficiente y segura dentro de la aplicación.*/
 
 public class UserDetailsServiceImpl implements UserDetailsService {
   @Override

@@ -17,13 +17,20 @@ import com.ucc.crudservice.service.JwtUtilService;
 
 
 @Component
+
+/*este filtro JwtRequestFilter se encarga de interceptar cada solicitud HTTP entrante,
+ extraer el token JWT del encabezado de autorización, validar el token JWT,
+ cargar los detalles del usuario y establecer la autenticación en el contexto de seguridad de Spring Security si el token es válido
+ . Esto permite asegurar las rutas y recursos de la aplicación basándose en la autenticación mediante tokens JWT. */
+
 public class JwtRequestFilter extends OncePerRequestFilter {
 
 
-    private UserDetailsService userDetailsService;
+    private UserDetailsService userDetailsService; //se utilizará para cargar los detalles del usuario durante la validación del token JWT.
 
 
-    private JwtUtilService jwtUtilService;
+    private JwtUtilService jwtUtilService;//proporciona métodos para la generación, validación y extracción de información de tokens JWT.
+
 
     public JwtRequestFilter(UserDetailsService userDetailsService, JwtUtilService jwtUtilService) {
         this.userDetailsService = userDetailsService;

@@ -12,6 +12,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
+
+/*
+   proporciona métodos para generar, validar y extraer información de tokens JWT,
+   lo cual es esencial para implementar la autenticación basada en tokens en una aplicación Spring Boot que utiliza Spring Security.
+   Los tokens JWT generados incluyen claims adicionales como el rol del usuario,
+   permitiendo así una gestión segura y eficiente de la autenticación y autorización en la aplicación.
+*/
+
 public class JwtUtilService {
   // LLAVE_MUY_SECRETA => [Base64] => TExBVkVfTVVZX1NFQ1JFVEE=
   private static final String JWT_SECRET_KEY = "TExBVkVfTVVZX1NFQ1JFVEE=";
